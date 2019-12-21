@@ -13,7 +13,8 @@ class App extends React.Component {
 
     this.state={
        link:"",
-       url:""
+       url:"",
+       display: "no"
 
 
     }
@@ -31,7 +32,8 @@ class App extends React.Component {
        let hash = res.data.hashid;
        console.log(hash);
        this.setState({
-         url : `https://rel.ink/${hash}`
+         url : `https://rel.ink/${hash}`,
+         display: "block"
        })
        
        
@@ -54,6 +56,8 @@ class App extends React.Component {
   
 
   render(){
+
+    
   return (
     <div>
       <header className="header">
@@ -78,16 +82,22 @@ class App extends React.Component {
              on how your links are performing.</p>
           <button className="btn btn-rounded">Get started</button>
         </div>
+         <div className="modal" style={{display: this.state.display=="no"? "none": "block"}}>
+           <span onClick={()=>{this.setState({display: "no"})}}>x</span>
+        <h2>{this.state.link}</h2>
+        <h2>{this.state.url}</h2>
+      </div>
       </section>
       <section className="central"> 
       <hr/>
       <div className="short-link-input">
         <input placeholder="Shorten your link here..." type="text" name="url" value={this.state.link} onChange={this.handleChange}></input>
     <button className="btn" onClick={this.fetchData}>Shorten it!</button>
-    <h2>{this.state.link}</h2>
-  <h2>{this.state.url}</h2>
+    
       </div>
+     
       <div className="showcase">
+        
         <h1>Advanced Statistics</h1>
         <p> Track how your links are performing across the web with our 
             advanced statistics dashboard.</p>
