@@ -1,10 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 import axios from 'axios';
 import chart from "./images/icon-brand-recognition.svg";
 import clock from "./images/icon-detailed-records.svg";
 import paint from "./images/icon-fully-customizable.svg";
+import logo from "./images/logo.svg";
+import fb from "./images/icon-facebook.svg";
+import twit from "./images/icon-twitter.svg";
+import pint from "./images/icon-pinterest.svg";
+import inst from "./images/icon-instagram.svg";
 
 
 class App extends React.Component {
@@ -83,13 +88,15 @@ class App extends React.Component {
           <button className="btn btn-rounded">Get started</button>
         </div>
          <div className="modal" style={{display: this.state.display=="no"? "none": "block"}}>
+           <div className="modal-content">
            <span onClick={()=>{this.setState({display: "no"})}}>x</span>
-        <h2>{this.state.link}</h2>
-        <h2>{this.state.url}</h2>
+        <h2><a href={this.state.link}>{this.state.link}</a></h2>
+        <h2><a href={this.state.url}>{this.state.url}</a></h2>
+        </div>
       </div>
       </section>
       <section className="central"> 
-      <hr/>
+      
       <div className="short-link-input">
         <input placeholder="Shorten your link here..." type="text" name="url" value={this.state.link} onChange={this.handleChange}></input>
     <button className="btn" onClick={this.fetchData}>Shorten it!</button>
@@ -103,6 +110,7 @@ class App extends React.Component {
             advanced statistics dashboard.</p>
       </div>
       <div className="container">
+      <hr/>
         
         <div className="item item-stat">
           <div className="img-item">
@@ -131,6 +139,55 @@ class App extends React.Component {
         </div>
       </div>
       </section>
+
+      <section className="bottom">
+        <h1>Boost your links today</h1>
+        <button className="btn btn-rounded">Get started</button>
+      </section>
+      <footer className="footer">
+        <div className="content">
+          <img className="logo" src={logo}></img>
+          <table className="table">
+            <tbody>
+            <tr>
+              <th>Features</th>
+              <th>Resources</th>
+              <th>Company</th>
+
+            </tr>
+            <tr>
+              <td>Link Shortening</td>
+              <td>Blog</td>
+              <td>About</td>
+            </tr>
+            <tr>
+              <td>Branded links</td>
+              <td>Developers</td>
+              <td>Our Team</td>
+            </tr>
+            <tr>
+              <td>Analytics</td>
+              <td>Support</td>
+              <td>Careers</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>Contact</td>
+            </tr>
+            </tbody>
+          </table>
+
+          <div className="social">
+          <img src={fb}/>
+          <img src={twit}/>
+          <img src={pint}/>
+          <img src={inst}/>
+          </div>
+
+        </div>
+
+      </footer>
 
      
     
